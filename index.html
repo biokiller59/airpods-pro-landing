@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050506">
+<title>AirPods Pro 3 — Concept landing page</title>
+<meta name="description" content="A concept landing page for in-ear wireless earbuds: noise cancellation, heart rate, battery and fit. Portfolio demo, not affiliated with Apple Inc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050506; --panel:#111114; --line:#232328; --text:#f5f5f7; --muted:#8e8e96;
+  --light:#f4f4f6; --ink:#111113; --ink-muted:#62626a;
+  --g1:#5ac8fa; --g2:#a78bfa; --g3:#f472b6;
+  --grad:linear-gradient(100deg,var(--g1),var(--g2) 50%,var(--g3));
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--text);font:400 17px/1.55 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-weight:800;letter-spacing:-.035em;line-height:1.02}
+h2{font-size:clamp(36px,5.6vw,72px)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kicker{font-size:15px;font-weight:700;color:var(--muted);margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--text);color:var(--ink);font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;border:0;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px -10px var(--g2)}
+.btn.line{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1px #ffffff40}
+:focus-visible{outline:2px solid var(--g1);outline-offset:3px}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;background:#050506b3;backdrop-filter:saturate(1.6) blur(16px);border-bottom:1px solid #ffffff12}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;font-size:14px}
+.nav b{font-weight:800;font-size:17px}
+.nav ul{display:flex;gap:28px;list-style:none;padding:0;color:#cfcfd4}
+.nav ul a:hover{color:#fff}
+.nav .btn{padding:7px 16px;font-size:13px}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden;padding:120px 0 60px}
+.hero-bg{position:absolute;inset:0;background:url(img/hero.jpg) center 60%/cover;opacity:.75;transform:scale(1.1);will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,transparent 0,#050506aa 55%,var(--bg) 92%)}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(44px,11vw,150px)}.hero h1 .grad{white-space:nowrap}
+.hero p{font-size:clamp(19px,2.2vw,26px);font-weight:600;color:#d8d8de;margin:14px 0 34px}
+.hero .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.price{margin-top:22px;font-size:14px;color:var(--muted)}
+
+section{padding:130px 0}
+
+/* scroll-filled statement */
+.statement p{font-size:clamp(28px,4.2vw,54px);font-weight:800;letter-spacing:-.03em;line-height:1.15;max-width:1000px}
+.statement span{color:#2a2a30;transition:color .3s}
+.statement span.lit{color:var(--text)}
+
+/* ANC demo */
+.anc{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.anc p.sub{color:var(--muted);margin:20px 0 32px;max-width:440px}
+.modes{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px;flex-wrap:wrap}
+.modes button{border:0;background:none;padding:11px 20px;border-radius:999px;cursor:pointer;font-weight:700;font-size:14px;color:var(--muted);transition:background .3s,color .3s}
+.modes button[aria-pressed=true]{background:var(--text);color:var(--ink)}
+.wave{aspect-ratio:1;border-radius:32px;background:radial-gradient(circle at 50% 50%,#1b1b22,var(--panel) 70%);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:6px;position:relative;overflow:hidden}
+.wave i{width:6px;border-radius:6px;background:var(--grad);background-size:100% 300px;height:var(--h,40px);transition:height .5s var(--ease)}
+.wave .lbl{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:14px;color:var(--muted)}
+.wave .db{position:absolute;top:22px;left:26px;font-weight:800;font-size:15px}
+
+/* bento */
+.light{background:var(--light);color:var(--ink)}
+.light .kicker{color:var(--ink-muted)}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:56px}
+.card{background:#fff;border-radius:28px;padding:34px;position:relative;overflow:hidden;min-height:300px;display:flex;flex-direction:column}
+.card h3{font-size:clamp(24px,2.4vw,32px)}
+.card p{color:var(--ink-muted);margin-top:10px;font-size:16px}
+.card .big{font-size:clamp(56px,7vw,92px);font-weight:800;letter-spacing:-.05em;line-height:1;margin-top:auto}
+.card.img{padding:0;color:#fff}
+.card.img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.card.img:hover img{transform:scale(1.05)}
+.card.img .txt{position:relative;margin-top:auto;padding:34px;background:linear-gradient(0deg,#000a,transparent)}
+.card.img p{color:#e6e6ea}
+.c1{grid-column:span 4;min-height:440px}.c2{grid-column:span 2}.c3{grid-column:span 2}.c4{grid-column:span 2}.c5{grid-column:span 2}.c6{grid-column:span 3;min-height:420px}.c7{grid-column:span 3;min-height:420px}
+.pulse{display:flex;align-items:center;gap:10px;margin-top:auto}
+.pulse svg{width:100%;height:70px}
+.pulse path{stroke:#ff375f;stroke-width:3;fill:none;stroke-dasharray:420;animation:beat 2.2s linear infinite}
+@keyframes beat{from{stroke-dashoffset:420}to{stroke-dashoffset:-420}}
+.bpm{font-size:40px;font-weight:800;letter-spacing:-.04em}
+.bpm small{font-size:15px;color:var(--ink-muted);font-weight:600}
+.bubbles{margin-top:auto;display:grid;gap:8px;font-size:15px;font-weight:600}
+.bubbles span{padding:10px 14px;border-radius:16px;width:max-content;max-width:100%}
+.bubbles span:first-child{background:#ececf0}
+.bubbles span:last-child{background:#007aff;color:#fff;justify-self:end}
+
+/* battery */
+.battery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.ring{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:34px;text-align:center}
+.ring svg{width:150px;height:150px;margin:0 auto 20px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:10}
+.ring .bgc{stroke:#24242a}
+.ring .fg{stroke:url(#g);stroke-linecap:round;stroke-dasharray:408;stroke-dashoffset:408;transition:stroke-dashoffset 1.8s var(--ease)}
+.ring.in .fg{stroke-dashoffset:var(--off)}
+.ring b{display:block;font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.ring small{color:var(--muted)}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.fit-img{border-radius:28px;overflow:hidden;aspect-ratio:4/5}
+.fit-img img{width:100%;height:100%;object-fit:cover}
+.sizes{display:flex;gap:10px;margin:30px 0 22px;flex-wrap:wrap}
+.sizes button{width:62px;height:62px;border-radius:50%;border:1px solid var(--line);background:var(--panel);cursor:pointer;font-weight:800;font-size:14px;transition:all .25s var(--ease)}
+.sizes button[aria-pressed=true]{background:var(--text);color:var(--ink);transform:scale(1.08)}
+.fit .note{color:var(--muted);min-height:52px}
+
+/* order */
+.order{text-align:center;position:relative;overflow:hidden}
+.order::before{content:"";position:absolute;width:700px;height:700px;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#a78bfa33,transparent 65%);pointer-events:none}
+.order .wrap{position:relative}
+.order p{color:var(--muted);margin:18px auto 34px;max-width:480px}
+.notify{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap}
+.notify input{flex:1;min-width:200px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:14px 22px;font-size:16px}
+.notify input:focus{outline:none;border-color:var(--g2)}
+.msg{margin-top:16px;font-weight:600;min-height:26px}
+
+footer{border-top:1px solid var(--line);padding:36px 0;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .nav ul{display:none}
+  .anc,.fit{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr 1fr}
+  .bento>*{grid-column:span 2!important;min-height:280px}
+  .battery{grid-template-columns:1fr}
+  section{padding:90px 0}
+  .wave{aspect-ratio:4/3}
+}
+@media (max-width:360px){body .sizes{gap:6px}body .sizes button{width:46px;height:46px;font-size:13px}}
+@media (max-width:480px){
+  .card{padding:26px}
+  .card.img .txt{padding:26px}
+  .hero .btn{flex:1 1 auto;white-space:nowrap}
+  .sizes{gap:8px}.sizes button{width:54px;height:54px}
+  .modes button{padding:10px 14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <b>AirPods Pro 3</b>
+    <ul>
+      <li><a href="#anc">Noise control</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#battery">Battery</a></li>
+      <li><a href="#fit">Fit</a></li>
+    </ul>
+    <a class="btn" href="#order">Pre-order</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg" id="heroBg" role="img" aria-label="Wireless earbuds and charging case on a dark reflective surface"></div>
+    <div class="wrap">
+      <p class="kicker rv">New</p>
+      <h1 class="rv">AirPods <span class="grad">Pro 3</span></h1>
+      <p class="rv">Quiet, on your terms.</p>
+      <div class="ctas rv">
+        <a class="btn" href="#order">Pre-order</a>
+        <a class="btn line" href="#anc">Hear the difference</a>
+      </div>
+      <p class="price rv">From $249</p>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <p id="statement">Twice the noise cancellation. A heart rate sensor in every bud. Live translation in your ears. And a fit made for running, not just sitting still.</p>
+    </div>
+  </section>
+
+  <section id="anc" style="padding-top:20px">
+    <div class="wrap anc">
+      <div class="rv">
+        <p class="kicker">Active Noise Cancellation</p>
+        <h2>The city, <span class="grad">on mute.</span></h2>
+        <p class="sub">Microphones listen to the world 48,000 times a second and cancel it before it reaches you. Switch modes to see what changes.</p>
+        <div class="modes" role="group" aria-label="Listening mode">
+          <button aria-pressed="false" data-mode="off">Off</button>
+          <button aria-pressed="false" data-mode="tr">Transparency</button>
+          <button aria-pressed="true" data-mode="anc">Noise cancellation</button>
+        </div>
+      </div>
+      <div class="wave rv" id="wave" aria-hidden="true"><span class="db" id="db">≈ 30 dB</span><span class="lbl" id="lbl">Street noise you hear</span></div>
+    </div>
+  </section>
+
+  <section id="features" class="light">
+    <div class="wrap">
+      <p class="kicker rv">Features</p>
+      <h2 class="rv">Small buds.<br>Big list.</h2>
+      <div class="bento">
+        <article class="card img c1 rv"><img src="img/case.jpg" alt="Earbuds in an open white charging case" loading="lazy"><div class="txt"><h3>Redesigned from the inside</h3><p>A smaller body, new acoustic chamber and a case that fits any pocket.</p></div></article>
+        <article class="card c2 rv"><h3>Heart rate</h3><p>Tracks your pulse during workouts, no watch needed.</p>
+          <div class="pulse"><svg viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 H90 L105 40 L115 10 L128 62 L140 26 L150 40 H300"/></svg></div>
+          <div class="bpm"><span id="bpm">128</span> <small>BPM</small></div></article>
+        <article class="card c3 rv"><h3>Live Translation</h3><p>Talk to people in another language. Hear them in yours.</p>
+          <div class="bubbles"><span>¿Dónde está la estación?</span><span>Where is the station?</span></div></article>
+        <article class="card c4 rv"><h3>Sweat and water</h3><p>Rain, gym, a long run in July.</p><div class="big grad">IP57</div></article>
+        <article class="card c5 rv"><h3>Spatial Audio</h3><p>Sound that moves with your head, like a cinema around you.</p><div class="big">360°</div></article>
+        <article class="card img c6 rv"><img src="img/run.jpg" alt="Woman running with earbuds in" loading="lazy" style="object-position:50% 30%"><div class="txt"><h3>Made to move</h3><p>Stays in through sprints, jumps and bumpy trails.</p></div></article>
+        <article class="card img c7 rv"><img src="img/blue.jpg" alt="White charging case on a blue background" loading="lazy"><div class="txt"><h3>Find it anywhere</h3><p>The case has a speaker and a precise location chip.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="battery">
+    <div class="wrap">
+      <p class="kicker rv">Battery</p>
+      <h2 class="rv">All day, <span class="grad">then some.</span></h2>
+      <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#5ac8fa"/><stop offset=".5" stop-color="#a78bfa"/><stop offset="1" stop-color="#f472b6"/></linearGradient></defs></svg>
+      <div class="battery">
+        <div class="ring rv" style="--off:204"><svg viewBox="0 0 150 150"><circle class="bgc" cx="75" cy="75" r="65"/><circle class="fg" cx="75" cy="75" r="65"/></svg><b>8 h</b><small>Listening with noise cancellation</small></div>
+        <div class="ring rv" style="--off:0"><svg viewBox="0 0 150 150"><circle class="bgc" cx="75" cy="75" r="65"/><circle class="fg" cx="75" cy="75" r="65"/></svg><b>24 h</b><small>Total with the charging case</small></div>
+        <div class="ring rv" style="--off:340"><svg viewBox="0 0 150 150"><circle class="bgc" cx="75" cy="75" r="65"/><circle class="fg" cx="75" cy="75" r="65"/></svg><b>5 min</b><small>Charge for about an hour of music</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fit" style="padding-top:0">
+    <div class="wrap fit">
+      <div class="fit-img rv"><img src="img/hand.jpg" alt="Hand holding an open charging case with earbuds" loading="lazy"></div>
+      <div class="rv">
+        <p class="kicker">Fit</p>
+        <h2>Five sizes.<br>One is yours.</h2>
+        <div class="sizes" role="group" aria-label="Ear tip size">
+          <button aria-pressed="false">XXS</button><button aria-pressed="false">XS</button><button aria-pressed="false">S</button><button aria-pressed="true">M</button><button aria-pressed="false">L</button>
+        </div>
+        <p class="note" id="note">Medium: comes on the buds out of the box. Foam-filled tips seal better and block more noise.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="order">
+    <div class="wrap">
+      <h2 class="rv">Ready when <span class="grad">you are.</span></h2>
+      <p class="rv">Leave your email and we'll tell you the moment pre-orders open in your country.</p>
+      <form class="notify rv" id="notify" novalidate>
+        <input type="email" name="email" placeholder="you@example.com" aria-label="Email" autocomplete="email" required>
+        <button class="btn" type="submit">Notify me</button>
+      </form>
+      <p class="msg" id="msg" role="status"></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Fan-made concept for a portfolio. Not affiliated with Apple Inc. AirPods is a trademark of Apple Inc.</span>
+    <span>Photos: Unsplash</span>
+  </div>
+</footer>
+
+<script>
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// statement lights up word by word while scrolling
+const st=document.getElementById('statement');
+st.innerHTML=st.textContent.split(' ').map(w=>`<span>${w}</span>`).join(' ');
+const words=st.querySelectorAll('span');
+const heroBg=document.getElementById('heroBg');
+function onScroll(){
+  const r=st.getBoundingClientRect(),k=Math.min(Math.max((innerHeight*.85-r.top)/(r.height+innerHeight*.35),0),1);
+  const n=still?words.length:Math.round(k*words.length);
+  words.forEach((w,i)=>w.classList.toggle('lit',i<n));
+  if(!still&&scrollY<innerHeight) heroBg.style.transform=`scale(${1.1-scrollY/innerHeight*.08}) translateY(${scrollY*.3}px)`;
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+// noise bars
+const wave=document.getElementById('wave'),N=innerWidth<500?24:36;
+for(let i=0;i<N;i++)wave.insertBefore(document.createElement('i'),wave.lastElementChild);
+const bars=wave.querySelectorAll('i');
+const MODES={off:{amp:1,db:'≈ 75 dB',lbl:'Full street noise'},tr:{amp:.6,db:'≈ 60 dB',lbl:'You hear voices and traffic, softer'},anc:{amp:.08,db:'≈ 30 dB',lbl:'Almost silence'}};
+let mode='anc';
+function draw(){bars.forEach(b=>{const a=MODES[mode].amp;b.style.setProperty('--h',(8+Math.random()*220*a)+'px')})}
+document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{
+  mode=b.dataset.mode;
+  document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  db.textContent=MODES[mode].db;lbl.textContent=MODES[mode].lbl;draw();
+}));
+draw();if(!still)setInterval(draw,520);
+
+// heart rate ticker
+if(!still)setInterval(()=>bpm.textContent=124+Math.round(Math.random()*9),1100);
+
+// ear tip sizes
+const NOTES={XXS:'Extra extra small: new size for the smallest ears.',XS:'Extra small: a snug seal for narrow ear canals.',S:'Small: a lighter fit for smaller ears.',M:'Medium: comes on the buds out of the box.',L:'Large: the deepest seal for wider ear canals.'};
+const sz=document.querySelectorAll('.sizes button');
+sz.forEach(b=>b.addEventListener('click',()=>{sz.forEach(x=>x.setAttribute('aria-pressed',x===b));note.textContent=NOTES[b.textContent]}));
+
+// notify form: demo only, nothing is sent
+notify.addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=notify.email;
+  if(!f.value.trim()||!f.checkValidity()){msg.textContent='Please enter a valid email.';msg.style.color='#ff7a90';f.focus();return}
+  msg.style.color='';msg.textContent="You're on the list. We'll be in touch.";notify.reset();
+});
+</script>
+</body>
+</html>
